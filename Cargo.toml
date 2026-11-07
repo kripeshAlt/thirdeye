@@ -1,0 +1,26 @@
+[package]
+name = "dualcam"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+eframe = { version = "0.30", features = ["accesskit", "persistence"] }
+egui = { version = "0.30", features = ["accesskit"] }
+image = "0.25"
+clap = { version = "4.5", features = ["derive"] }
+anyhow = "1.0"
+thiserror = "1.0"
+
+# Cross-platform camera abstraction
+camera = "0.1"
+
+# Platform-specific camera backends
+#[cfg(target_os = "linux")]
+v4l = { version = "0.13", features = ["v4l2-sys"] }
+#[cfg(target_os = "windows")]
+windows = { version = "0.58", features = ["Win32_Media_MediaFoundation", "Win32_Graphics_Direct3D11", "Win32_Foundation", "Win32_System_Com", "Win32_UI_WindowsAndMessaging"] }
+
+[profile.release]
+opt-level = 3
+lto = true
+codegen-units = 1
