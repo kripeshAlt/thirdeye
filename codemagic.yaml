@@ -2,7 +2,7 @@ workflows:
 
     sample-workflow:
 
-        name:noEye
+        name: noEye
         max_build_duration: 120
 
         instance_type: linux
